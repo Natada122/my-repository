@@ -1,0 +1,18 @@
+<h2><a routerLink="/favorites" class="right">favorite</a></h2>
+<h1>
+  PropertyCross
+</h1>
+<p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to
+  search in your current location!</p>
+<input type='text' #searchBox id="search-box">
+<button (click)="search(searchBox.value)">Go!</button>
+<button>My location</button>
+<h2>{{message}}</h2>
+<div>
+  <ul>
+    <li *ngFor="let search of lastSearches;" routerLink="/results" [queryParams]="{'location': search.location}"
+      (click)="refreshSearch(search)">Search
+      "{{search.location}}"({{search.listings.length}})
+    </li>
+  </ul>
+</div>

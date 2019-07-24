@@ -1,0 +1,9 @@
+<h1>{{curSearch.listings.length}} matches</h1>
+<ul>
+    <li *ngFor="let house of curSearch.listings; trackBy: trackById" routerLink="{{house.id}}">
+        <h1>{{house.price | currency:'USD'}}</h1>
+        <p>{{house.summary}}</p>
+        <img [src]="house.imgUrl">
+    </li>
+</ul>
+<button (click)="load(curSearch)">Load more</button>
