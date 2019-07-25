@@ -1,37 +1,33 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Search } from "../Search";
-import { DataService } from "../data.service";
+import { DataService } from "../services/data.service";
+import { sortByField } from "../helpers";
 @Component({
   selector: "app-search-page",
   templateUrl: "./search-page.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["./search-page.component.css"]
 })
 export class SearchPageComponent implements OnInit {
-  lastSearches: Search[];
+  public searchValue: number;
+  public lastSearches: Search[];
   constructor(private dataService: DataService) {}
 
-  ngOnInit() {
+ public ngOnInit() {
     this.lastSearches = this.dataService.getSearch();
   }
-  search(location: string) {
+  public search(location: string) {
     this.dataService
       .getData(location)
       .subscribe(data =>
         this.lastSearches.push(new Search(location, Date.now(), data))
       );
-    this.sortSearch();
+    this.lastSearches.sort(sortByField("date"));
     this.dataService.setSearch(this.lastSearches);
   }
-  refreshSearch(search: Search) {
+ public refreshSearch(search: Search) {
     search.date = Date.now();
-    this.sortSearch();
+    this.lastSearches.sort(sortByField("date"));
     this.dataService.setSearch(this.lastSearches);
-  }
-  sortSearch() {
-    this.lastSearches.sort((a: Search, b: Search) => {
-      if (a.date < b.date) return 1;
-      if (a.date > b.date) return -1;
-      return 0;
-    });
   }
 }

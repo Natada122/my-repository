@@ -1,6 +1,7 @@
 <h1>Property Details</h1>
-<button>+</button>
-<h2>{{house.price}}</h2>
+<button (click)="onSelect()">{{favSymbol}}</button>
+<h2>{{house.price | currency:'USD'}}</h2>
 <img [src]="house.imgUrl">;
-<p>{{house.bedrooms}} bedrooms, {{house.bathrooms}} bathrooms</p>
+<p *ngIf="house.bedroomNumber">{{house.bedroomNumber}} bedrooms</p>
+<p *ngIf="house.bathroomNumber">{{house.bathroomNumber}} bathrooms</p>
 <p>{{house.summary}}</p>
