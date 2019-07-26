@@ -3,6 +3,8 @@ export class Search {
     public location: string,
     public date: number,
     public listings: House[],
-    public curPage:number=1
+    public type: string,
+    public totalResult: number,
+    public curPage: number = 1
   ) {}
 }

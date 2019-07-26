@@ -1,21 +1,24 @@
 :host {
-    margin: auto;
     text-align: center;
     position: absolute;
-  }
+    background-color:rgb(160, 49, 72);
+    width: 90%;
+   }
   a:link,
   a:visited {
-    background-color: #f44336;
+    background-color: #fdbe35;
     color: white;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
   }
-  
+  p{
+    color: rgb(255, 241, 204)
+  }
   a:hover,
   a:active {
-    background-color: red;
+    background-color: rgb(255, 179, 38);
   }
   .right {
     position: absolute;
@@ -25,4 +28,9 @@
   ul {
     background-color: #c9c7c7;
   }
-  
+  h1{
+  color: azure;
+  }
+  h2{
+    color: azure;
+    }

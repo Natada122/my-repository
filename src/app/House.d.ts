@@ -5,4 +5,6 @@
   imgUrl: string;
   summary: string;
   id: number;
+  location:string;
+  title:string;
 }

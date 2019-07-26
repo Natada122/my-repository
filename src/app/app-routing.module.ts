@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: "results", component: ListOfResultsComponent },
   { path: "favorites", component: FavoritesPageComponent },
   { path: "results/:id", component: PropertyListingPageComponent },
+  { path: "favorites/:id", component: PropertyListingPageComponent },
   { path: "**", component: SearchPageComponent }
 ];
 

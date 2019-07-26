@@ -1,48 +1,63 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs/operators";
+import { map, catchError, takeUntil } from "rxjs/operators";
 import { Search } from "../Search";
-import { Observable } from "rxjs";
+import { Observable, throwError, timer } from "rxjs";
 import { URL } from "../constants";
-import { SEARHES_KEY,FAVORITE_KEY } from "../constants";
+import { SEARHES_KEY, FAVORITE_KEY } from "../constants";
 @Injectable({
   providedIn: "root"
 })
 export class DataService {
   constructor(private http: HttpClient) {}
-  getSearch(): Search[] {
+  public getSearch(): Search[] {
     return localStorage.getItem(SEARHES_KEY)
       ? JSON.parse(localStorage.getItem(SEARHES_KEY))
       : [];
   }
-  setSearch(lastSearches: Search[]) {
+  public setSearch(lastSearches: Search[]) {
     localStorage.setItem(SEARHES_KEY, JSON.stringify(lastSearches));
   }
-  getFavorites(): House[] {
+  public getFavorites(): House[] {
     return localStorage.getItem(FAVORITE_KEY)
       ? JSON.parse(localStorage.getItem(FAVORITE_KEY))
       : [];
   }
-  setFavorites(houses:House[])
-  {
+  public setFavorites(houses: House[]) {
     localStorage.setItem(FAVORITE_KEY, JSON.stringify(houses));
   }
-  getData(location: string, page = 1): Observable<House[]> {
-    const url = `${URL}&page=${page}&place_name=${location}`;
-
+  public getData(
+    location: string,
+    typeSearch: string,
+    page = 1
+  ): Observable<any> {
+    const timer$ = timer(5000);
+    const url = `${URL}&page=${page}&${typeSearch}=${location}`;
     return this.http.jsonp(url, "callback").pipe(
       map(({ response }) => {
-        let { listings } = response;
-        return listings.map(house => {
+        let { listings, total_results, status_code } = response;
+        listings = listings.map(house => {
           return {
             bathroomNumber: house.bathroom_number,
             bedroomNumber: house.bedroom_number,
             price: house.price,
             imgUrl: house.img_url,
             summary: house.summary,
-            id: `f${(~~(Math.random()*1e8)).toString(16)}`
+            id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+            location: location,
+            title: house.title
           };
         });
+
+        return {
+          listings,
+          totalResult: total_results,
+          statusCode: status_code
+        };
+      }),
+      takeUntil(timer$),
+      catchError(err => {
+        return throwError(err);
       })
     );
   }

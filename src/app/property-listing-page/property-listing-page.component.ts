@@ -5,17 +5,16 @@ import {
   OnDestroy
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Subscription } from "rxjs";
+import { Subscription, Subject } from "rxjs";
 import { DataService } from "../services/data.service";
-import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 import {
   QUERY_PARAM_LOCATION,
   QUERY_PARAM_ID,
   FAVORITE_SYMBOL,
   UNFAVORITE_SYMBOL
 } from "../constants";
+import { takeUntil } from "rxjs/operators";
 
-@AutoUnsubscribe()
 @Component({
   selector: "app-property-listing-page",
   templateUrl: "./property-listing-page.component.html",
@@ -36,23 +35,29 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
   ) {}
   public ngOnInit() {
     this.favorites = this.dateService.getFavorites();
-    this.routeSubscription = this.route.params.subscribe(
-      params => (this.id = params[QUERY_PARAM_ID])
-    );
-    this.querySubscription = this.route.queryParams.subscribe(
-      (queryParam: any) => {
-        this.house = this.dateService
+    this.routeSubscription = this.route.params
+      .pipe(takeUntil(this.destroy))
+      .subscribe(params => (this.id = params[QUERY_PARAM_ID]));
+    this.querySubscription = this.route.queryParams
+      .pipe(takeUntil(this.destroy))
+      .subscribe((queryParam: any) => {
+        let search = this.dateService
           .getSearch()
-          .find(value => queryParam[QUERY_PARAM_LOCATION] == value.location)
-          .listings.find(value => this.id == value.id);
-      }
-    );
-    if (this.favorites.find(value => this.house.id == value.id)) {
+          .find(value => queryParam[QUERY_PARAM_LOCATION] == value.location);
+        if (search) {
+          this.house = search.listings.find(value => this.id == value.id);
+        }
+      });
+    if (this.favorites.some(value => this.house.id == value.id)) {
       this.isFavorite = true;
       this.favSymbol = UNFAVORITE_SYMBOL;
     }
   }
-  public ngOnDestroy() {}
+  private destroy: Subject<boolean> = new Subject<boolean>();
+  public ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.unsubscribe();
+  }
   public onSelect() {
     if (this.isFavorite) {
       this.deleteFavorite();
@@ -60,7 +65,6 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
       this.addFavorite();
     }
     this.dateService.setFavorites(this.favorites);
-    console.log(this.dateService.getFavorites());
   }
   public addFavorite() {
     this.favSymbol = UNFAVORITE_SYMBOL;
@@ -70,6 +74,9 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
   public deleteFavorite() {
     this.favSymbol = FAVORITE_SYMBOL;
     this.isFavorite = false;
-    this.favorites.splice(this.favorites.indexOf(this.house), 1);
+    this.favorites.splice(
+      this.favorites.findIndex(value => this.house.id == value.id),
+      1
+    );
   }
 }

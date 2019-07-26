@@ -1,0 +1,33 @@
+:host {
+    text-align: center;
+    background-color:rgb(153, 153, 153);
+    position: absolute;
+    width: 100%;
+  }
+  a:link,
+  a:visited {
+    background-color: #fdbe35;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  p{
+      color: aliceblue;
+  }
+  a:hover,
+  a:active {
+    background-color: rgb(255, 179, 38);
+  }
+  .right {
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+  }
+  h1{
+  color: azure;
+  }
+  h2{
+    color: azure;
+    }

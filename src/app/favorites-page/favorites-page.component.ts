@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-//в разработке
+import { DataService } from "../services/data.service";
+
 @Component({
   selector: "app-favorites-page",
   templateUrl: "./favorites-page.component.html",
@@ -7,9 +8,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
   styleUrls: ["./favorites-page.component.css"]
 })
 export class FavoritesPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {
-    
+  constructor(private dataService: DataService) {
+    this.favorites = dataService.getFavorites();
+  }
+  public favorites: House[];
+  public ngOnInit() {}
+  public trackById(index, item) {
+    return item.id;
   }
 }

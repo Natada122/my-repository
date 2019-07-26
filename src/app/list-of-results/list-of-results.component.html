@@ -1,7 +1,8 @@
-<h1>{{lastSearches[this.curSearchIndex].listings.length}} matches</h1>
+<h1>{{lastSearches[this.curSearchIndex].listings.length}} of {{lastSearches[this.curSearchIndex].totalResult}} matches
+</h1>
 <ul>
-    <li *ngFor="let house of lastSearches[this.curSearchIndex].listings; trackBy: trackById" routerLink="{{house.id}}"
-        [queryParams]="{'location': lastSearches[this.curSearchIndex].location}">
+    <li *ngFor="let house of curSearch.listings; trackBy: trackById" routerLink="{{house.id}}"
+        [queryParams]="{'location': curSearch.location}">
         <h1>{{house.price | currency:'USD'}}</h1>
         <p>{{house.summary}}</p>
         <img [src]="house.imgUrl">

@@ -1,0 +1,34 @@
+:host {
+  margin: auto;
+  text-align: center;
+}
+button {
+  background-color: #fdbe35;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 11cm;
+  width: 40%;
+}
+.right {
+  position: absolute;
+  right: 0px;
+  padding: 10px;
+}
+ul {
+  list-style-type: none;
+  background-color: #c9c7c7;
+}
+li {
+  color: rgb(112, 44, 44);
+}
+h1 {
+  color: azure;
+  background-color: rgb(160, 49, 72);
+}
+h2 {
+  color: azure;
+  background-color: rgb(160, 49, 72);
+}
