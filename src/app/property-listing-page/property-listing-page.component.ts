@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   OnDestroy
 } from "@angular/core";
+import { Location } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription, Subject } from "rxjs";
 import { DataService } from "../services/data.service";
@@ -13,7 +14,7 @@ import {
   FAVORITE_SYMBOL,
   UNFAVORITE_SYMBOL
 } from "../constants";
-import { takeUntil } from "rxjs/operators";
+import { takeUntil, zip } from "rxjs/operators";
 
 @Component({
   selector: "app-property-listing-page",
@@ -26,26 +27,27 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
   public favSymbol: string = FAVORITE_SYMBOL;
   public isFavorite: boolean = false;
   public favorites: House[];
-  private id: number;
   private routeSubscription: Subscription;
-  private querySubscription: Subscription;
   constructor(
     private route: ActivatedRoute,
-    private dateService: DataService
+    private dateService: DataService,
+    private url: Location
   ) {}
   public ngOnInit() {
     this.favorites = this.dateService.getFavorites();
     this.routeSubscription = this.route.params
-      .pipe(takeUntil(this.destroy))
-      .subscribe(params => (this.id = params[QUERY_PARAM_ID]));
-    this.querySubscription = this.route.queryParams
-      .pipe(takeUntil(this.destroy))
-      .subscribe((queryParam: any) => {
+      .pipe(
+        takeUntil(this.destroy),
+        zip(this.route.queryParams)
+      )
+      .subscribe(params => {
         let search = this.dateService
           .getSearch()
-          .find(value => queryParam[QUERY_PARAM_LOCATION] == value.location);
+          .find(value => params[1][QUERY_PARAM_LOCATION] == value.location);
         if (search) {
-          this.house = search.listings.find(value => this.id == value.id);
+          this.house = search.listings.find(
+            value => params[0][QUERY_PARAM_ID] == value.id
+          );
         }
       });
     if (this.favorites.some(value => this.house.id == value.id)) {
@@ -58,7 +60,7 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
-  public onSelect() {
+  public onSelect(): void {
     if (this.isFavorite) {
       this.deleteFavorite();
     } else {
@@ -66,17 +68,19 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
     }
     this.dateService.setFavorites(this.favorites);
   }
-  public addFavorite() {
+  public addFavorite(): void {
     this.favSymbol = UNFAVORITE_SYMBOL;
     this.isFavorite = true;
     this.favorites.push(this.house);
   }
-  public deleteFavorite() {
+  public deleteFavorite(): void {
     this.favSymbol = FAVORITE_SYMBOL;
     this.isFavorite = false;
     this.favorites.splice(
-      this.favorites.findIndex(value => this.house.id == value.id),
-      1
+      this.favorites.findIndex(value => this.house.id == value.id),1
     );
+  }
+  public goBack(): void {
+    this.url.back();
   }
 }

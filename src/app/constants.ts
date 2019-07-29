@@ -12,6 +12,8 @@ export const MESSAGE_ERROR_NULL_PROPERTIES =
   "There were no properties found for the given location.";
 export const MESSAGE_ERROR_NULL_LOCATION =
   "The location given was not recognised";
+  export const MESSAGE_SELECT_LOCATION =
+  "Select location below";
 export const MESSAGE_ERROR_TIMEOUT =
   "An error occurred while searching. Please check your network connection and try again.";
 export const MESSAGE_ERROR_DISABLED_LOCATION =

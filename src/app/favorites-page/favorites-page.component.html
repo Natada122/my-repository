@@ -1,7 +1,7 @@
 <h1 *ngIf="!favorites.length; else unset">You have not added any properties to your favourites</h1>
 <ng-template #unset>
     <ul>
-        <li *ngFor="let house of favorites; trackBy: trackById" routerLink="{{house.id}}"
+        <li *ngFor="let house of favorites; trackBy: trackById" [routerLink]="house.id"
             [queryParams]="{'location': house.location}">
             <h1>{{house.price | currency:'USD'}}</h1>
             <p>{{house.summary}}</p>

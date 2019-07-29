@@ -8,12 +8,12 @@ import { DataService } from "../services/data.service";
   styleUrls: ["./favorites-page.component.css"]
 })
 export class FavoritesPageComponent implements OnInit {
-  constructor(private dataService: DataService) {
-    this.favorites = dataService.getFavorites();
-  }
+  constructor(private dataService: DataService) {}
   public favorites: House[];
-  public ngOnInit() {}
-  public trackById(index, item) {
+  public ngOnInit() {
+    this.favorites = this.dataService.getFavorites();
+  }
+  public trackById(item: House): number {
     return item.id;
   }
 }

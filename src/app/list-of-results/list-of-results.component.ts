@@ -10,7 +10,7 @@ import { Search } from "../Search";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription, Subject } from "rxjs";
 import { QUERY_PARAM_LOCATION } from "../constants";
-import { takeUntil } from "rxjs/operators";
+import { takeUntil, finalize } from "rxjs/operators";
 
 @Component({
   selector: "app-list-of-results",
@@ -43,7 +43,7 @@ export class ListOfResultsComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
-  public load() {
+  public load(): void {
     this.lastSearches[this.curSearchIndex].curPage++;
     this.dateService
       .getData(
@@ -51,18 +51,20 @@ export class ListOfResultsComponent implements OnInit, OnDestroy {
         this.lastSearches[this.curSearchIndex].type,
         this.lastSearches[this.curSearchIndex].curPage
       )
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        takeUntil(this.destroy),
+        finalize(() => this.cdr.markForCheck())
+      )
       .subscribe(({ listings }) => {
         this.lastSearches[this.curSearchIndex].listings = this.lastSearches[
           this.curSearchIndex
         ].listings.concat(listings);
-        this.cdr.detectChanges();
       });
   }
-  public trackById(index, item) {
+  public trackById(item: House): number {
     return item.id;
   }
-  public get curSearch() {
+  public get curSearch(): Search {
     return this.lastSearches[this.curSearchIndex];
   }
 }

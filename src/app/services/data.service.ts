@@ -26,6 +26,27 @@ export class DataService {
   public setFavorites(houses: House[]) {
     localStorage.setItem(FAVORITE_KEY, JSON.stringify(houses));
   }
+  public getLocations(text: string): Observable<Place[]> {
+    const url = `${URL}&page=1&place_name=${text}`;
+    return this.http.jsonp(url, "callback").pipe(
+      map(({ response }) => {
+        let { locations } = response;
+        locations = locations.map(
+          (location: { place_name: string; title: string }) => {
+            return {
+              id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+              placeName: location.place_name,
+              title: location.title
+            };
+          }
+        );
+        return locations;
+      }),
+      catchError(err => {
+        return throwError(err);
+      })
+    );
+  }
   public getData(
     location: string,
     typeSearch: string,

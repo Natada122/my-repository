@@ -1,6 +1,6 @@
 :host {
     text-align: center;
-    background-color:rgb(153, 153, 153);
+    background-color:rgb(245, 245, 245);
     position: absolute;
     width: 100%;
   }
@@ -14,20 +14,30 @@
     display: inline-block;
   }
   p{
-      color: aliceblue;
+      color: rgb(70, 70, 70);
   }
   a:hover,
   a:active {
     background-color: rgb(255, 179, 38);
   }
-  .right {
+  .left {
     position: absolute;
-    right: 0px;
+    left: 50px;
     padding: 10px;
   }
   h1{
-  color: azure;
+  color: rgb(94, 94, 94);
   }
   h2{
-    color: azure;
+    color: rgb(63, 63, 63);
+    }
+    button {
+      background-color: #fdbe35;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      font-size: 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin:auto;
     }

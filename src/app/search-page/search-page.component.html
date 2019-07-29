@@ -4,15 +4,20 @@
 </h1>
 <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to
   search in your current location!</p>
-<input type='text' [(ngModel)]="searchValue" id="search-box" />
+<input type='text' [(ngModel)]="searchValue" id="search-box"/>
 <button (click)="search(searchValue,'place_name')">Go!</button>
 <button (click)="searchPoints()">My location</button>
 <h2>{{message}}</h2>
 <div>
   <ul *ngIf="!errorState">
-    <li *ngFor="let search of lastSearches" routerLink="/results" [queryParams]="{'location': search.location}"
-      (click)="refreshSearch(search)">Search
-      "{{search.location}}"({{search.totalResult}})
-    </li>
+    <ul *ngIf="inputState; else unset">
+      <li *ngFor="let location of lastLocations; trackBy: trackbyId" (click)=selectLocation(location)>{{location.title}}</li>
+    </ul>
+    <ng-template #unset>
+      <li *ngFor="let search of lastSearches; trackBy: trackbyDate" routerLink="/results"
+        [queryParams]="{'location': search.location}" (click)="refreshSearch(search)">Search
+        "{{search.location}}"({{search.totalResult}})
+      </li>
+    </ng-template>
   </ul>
 </div>
