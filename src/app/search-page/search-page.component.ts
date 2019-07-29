@@ -15,10 +15,12 @@ import {
   MESSAGE_ERROR_DISABLED_LOCATION,
   MESSAGE_ERROR_LOCATION_NOT_FOUND,
   MESSAGE_SELECT_LOCATION,
-  PLACE_SEARCH
+  PLACE_SEARCH,
+  MESSAGE_ERROR_NULL_PROPERTIES
 } from "../constants";
 import { Router } from "@angular/router";
-import { finalize, mergeMap } from "rxjs/operators";
+import { finalize, mergeMap, filter } from "rxjs/operators";
+import { empty } from "rxjs";
 
 @Component({
   selector: "app-search-page",
@@ -48,7 +50,7 @@ export class SearchPageComponent implements OnInit {
     this.dataService
       .getData(location, typeSearch)
       .pipe(
-        mergeMap(({ listings, totalResult }) => {
+        mergeMap(({ listings, totalResult, statusCode }) => {
           if (listings.length) {
             this.lastSearches.push(
               new Search(
@@ -64,10 +66,16 @@ export class SearchPageComponent implements OnInit {
             this.router.navigateByUrl(
               `/results?location=${this.lastSearches[0].location}`
             );
+          } else {
+            this.message = MESSAGE_ERROR_NULL_PROPERTIES;
           }
-          return this.dataService.getLocations(location);
+          if (statusCode == "200") {
+            return this.dataService.getLocations(location);
+          }
+          return empty();
         }),
-        finalize(() => this.cdr.markForCheck())
+        finalize(() => this.cdr.markForCheck()),
+        filter(value => !!value.length),
       )
       .subscribe(
         locations => {
