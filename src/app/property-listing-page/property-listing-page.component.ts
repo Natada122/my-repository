@@ -41,12 +41,13 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
         zip(this.route.queryParams)
       )
       .subscribe(params => {
+        let [paramId, paramLocation] = params;
         let search = this.dateService
           .getSearch()
-          .find(value => params[1][QUERY_PARAM_LOCATION] == value.location);
+          .find(value => paramLocation[QUERY_PARAM_LOCATION] == value.location);
         if (search) {
           this.house = search.listings.find(
-            value => params[0][QUERY_PARAM_ID] == value.id
+            value => paramId[QUERY_PARAM_ID] == value.id
           );
         }
       });
@@ -58,7 +59,7 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   public ngOnDestroy() {
     this.destroy.next(true);
-    this.destroy.unsubscribe();
+    this.destroy.complete();
   }
   public onSelect(): void {
     if (this.isFavorite) {
@@ -76,8 +77,8 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
   public deleteFavorite(): void {
     this.favSymbol = FAVORITE_SYMBOL;
     this.isFavorite = false;
-    this.favorites.splice(
-      this.favorites.findIndex(value => this.house.id == value.id),1
+    this.favorites = this.favorites.filter(
+      item => item != this.favorites.find(value => this.house.id == value.id)
     );
   }
   public goBack(): void {

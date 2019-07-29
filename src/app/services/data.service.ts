@@ -5,6 +5,7 @@ import { Search } from "../Search";
 import { Observable, throwError, timer } from "rxjs";
 import { URL } from "../constants";
 import { SEARHES_KEY, FAVORITE_KEY } from "../constants";
+import { generateId } from "../helpers";
 @Injectable({
   providedIn: "root"
 })
@@ -34,7 +35,7 @@ export class DataService {
         locations = locations.map(
           (location: { place_name: string; title: string }) => {
             return {
-              id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+              id: generateId(),
               placeName: location.place_name,
               title: location.title
             };
@@ -64,7 +65,7 @@ export class DataService {
             price: house.price,
             imgUrl: house.img_url,
             summary: house.summary,
-            id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+            id: generateId(),
             location: location,
             title: house.title
           };

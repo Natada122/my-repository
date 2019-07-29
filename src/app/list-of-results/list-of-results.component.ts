@@ -8,7 +8,7 @@ import {
 import { DataService } from "../services/data.service";
 import { Search } from "../Search";
 import { ActivatedRoute } from "@angular/router";
-import { Subscription, Subject } from "rxjs";
+import { Subject } from "rxjs";
 import { QUERY_PARAM_LOCATION } from "../constants";
 import { takeUntil, finalize } from "rxjs/operators";
 
@@ -21,7 +21,6 @@ import { takeUntil, finalize } from "rxjs/operators";
 export class ListOfResultsComponent implements OnInit, OnDestroy {
   public curSearchIndex: number;
   public lastSearches: Search[];
-  private querySubscription: Subscription;
   constructor(
     private dateService: DataService,
     private cdr: ChangeDetectorRef,
@@ -29,7 +28,7 @@ export class ListOfResultsComponent implements OnInit, OnDestroy {
   ) {}
   private destroy: Subject<boolean> = new Subject<boolean>();
   public ngOnInit() {
-    this.querySubscription = this.route.queryParams
+    this.route.queryParams
       .pipe(takeUntil(this.destroy))
       .subscribe((queryParam: any) => {
         this.lastSearches = this.dateService.getSearch();
@@ -41,22 +40,19 @@ export class ListOfResultsComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
     this.dateService.setSearch(this.lastSearches);
     this.destroy.next(true);
-    this.destroy.unsubscribe();
+    this.destroy.complete();
   }
   public load(): void {
-    this.lastSearches[this.curSearchIndex].curPage++;
+    this.curSearch.curPage++;
+    let { location, type, curPage } = this.curSearch;
     this.dateService
-      .getData(
-        this.lastSearches[this.curSearchIndex].location,
-        this.lastSearches[this.curSearchIndex].type,
-        this.lastSearches[this.curSearchIndex].curPage
-      )
+      .getData(location, type, curPage)
       .pipe(
         takeUntil(this.destroy),
         finalize(() => this.cdr.markForCheck())
       )
       .subscribe(({ listings }) => {
-        this.lastSearches[this.curSearchIndex].listings = this.lastSearches[
+        this.curSearch.listings = this.lastSearches[
           this.curSearchIndex
         ].listings.concat(listings);
       });

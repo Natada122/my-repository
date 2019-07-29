@@ -2,9 +2,7 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  ViewChild,
-  ElementRef
+  ChangeDetectorRef
 } from "@angular/core";
 import { Search } from "../Search";
 import { DataService } from "../services/data.service";
@@ -16,12 +14,11 @@ import {
   MESSAGE_ERROR_TIMEOUT,
   MESSAGE_ERROR_DISABLED_LOCATION,
   MESSAGE_ERROR_LOCATION_NOT_FOUND,
-  MESSAGE_ERROR_NULL_PROPERTIES,
   MESSAGE_SELECT_LOCATION,
   PLACE_SEARCH
 } from "../constants";
 import { Router } from "@angular/router";
-import { finalize } from "rxjs/operators";
+import { finalize, mergeMap } from "rxjs/operators";
 
 @Component({
   selector: "app-search-page",
@@ -50,9 +47,8 @@ export class SearchPageComponent implements OnInit {
     this.message = "Searhing";
     this.dataService
       .getData(location, typeSearch)
-      .pipe(finalize(() => this.cdr.markForCheck()))
-      .subscribe(
-        ({ listings, totalResult, statusCode }) => {
+      .pipe(
+        mergeMap(({ listings, totalResult }) => {
           if (listings.length) {
             this.lastSearches.push(
               new Search(
@@ -68,24 +64,19 @@ export class SearchPageComponent implements OnInit {
             this.router.navigateByUrl(
               `/results?location=${this.lastSearches[0].location}`
             );
-          } else {
-            if (statusCode === "200") {
-              this.dataService
-                .getLocations(location)
-                .pipe(finalize(() => this.cdr.markForCheck()))
-                .subscribe(locations => {
-                  this.inputState = true;
-                  this.lastLocations = locations;
-                  this.message = MESSAGE_SELECT_LOCATION;
-                  if (!this.lastLocations.length) {
-                    this.message = MESSAGE_ERROR_NULL_LOCATION;
-                    this.errorState = true;
-                  }
-                });
-            } else {
-              this.message = MESSAGE_ERROR_NULL_PROPERTIES;
-              this.errorState = true;
-            }
+          }
+          return this.dataService.getLocations(location);
+        }),
+        finalize(() => this.cdr.markForCheck())
+      )
+      .subscribe(
+        locations => {
+          this.inputState = true;
+          this.lastLocations = locations;
+          this.message = MESSAGE_SELECT_LOCATION;
+          if (!this.lastLocations.length) {
+            this.message = MESSAGE_ERROR_NULL_LOCATION;
+            this.errorState = true;
           }
         },
         () => {

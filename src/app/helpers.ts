@@ -9,3 +9,6 @@ export const sortByField = (nameField: string) => {
     return 0;
   };
 };
+export const generateId = () => {
+ return `f${(~~(Math.random() * 1e8)).toString(16)}`;
+};
