@@ -52,9 +52,7 @@ export class ListOfResultsComponent implements OnInit, OnDestroy {
         finalize(() => this.cdr.markForCheck())
       )
       .subscribe(({ listings }) => {
-        this.curSearch.listings = this.lastSearches[
-          this.curSearchIndex
-        ].listings.concat(listings);
+        this.curSearch.listings = this.curSearch.listings.concat(listings);
       });
   }
   public trackById(item: House): number {
