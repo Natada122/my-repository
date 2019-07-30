@@ -1,36 +1,53 @@
 :host {
-    text-align: center;
-    position: absolute;
-    background-color:rgb(160, 49, 72);
-    width: 90%;
-   }
-  a:link,
-  a:visited {
-    background-color: #fdbe35;
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-  }
-  p{
-    color: rgb(255, 241, 204)
-  }
-  a:hover,
-  a:active {
-    background-color: rgb(255, 179, 38);
-  }
-  .right {
-    position: absolute;
-    right: 0px;
-    padding: 10px;
-  }
-  ul {
-    background-color: #c9c7c7;
-  }
-  h1{
+  text-align: center;
+  position: absolute;
+  background-color: rgb(160, 49, 72);
+  width: 90%;
+}
+p {
+  color: rgb(255, 241, 204);
+}
+button {
+  color: white;
+}
+ul {
+  background-color: #c9c7c7;
+}
+h1 {
   color: azure;
-  }
-  h2{
-    color: azure;
-    }
+}
+h2 {
+  color: azure;
+}
+.progress {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
+.favorit {
+  background-color: #fdbe35;
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  text-decoration: none;
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  padding: 10px;
+}
+.list {
+  background-color: #c9c7c7;
+  text-align: center;
+}
+.item {
+  color: rgb(85, 32, 41);
+  font-size: 20px;
+  text-decoration: none;
+  display: inline-block;
+  margin: auto;
+}
+.scroll {
+  height: 200px;
+  width: 50%;
+  margin:auto;
+}

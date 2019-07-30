@@ -1,11 +1,17 @@
 <h1>{{curSearch.listings.length}} of {{curSearch.totalResult}} matches
 </h1>
-<ul>
-    <li *ngFor="let house of curSearch.listings; trackBy: trackById" [routerLink]='house.id'
+<mat-list class="list">
+    <mat-list-item *ngFor="let house of curSearch.listings; trackBy: trackById" [routerLink]='house.id'
         [queryParams]="{'location': curSearch.location}">
-        <h1>{{house.price | currency:'USD'}}</h1>
-        <p>{{house.summary}}</p>
-        <img [src]="house.imgUrl">
-    </li>
-</ul>
-<button (click)="load(curSearch)">Load more</button>
+        <mat-card matLine class="item">
+            <mat-card-title>
+                <h1 matLine>{{house.price | currency:'USD'}}</h1>
+            </mat-card-title>
+            <mat-card-content>
+                <p matLine>{{house.summary}}</p>
+                <img matLine [src]="house.imgUrl">
+            </mat-card-content>
+        </mat-card>
+    </mat-list-item>
+</mat-list>
+<button mat-button (click)="load(curSearch)">Load more</button>

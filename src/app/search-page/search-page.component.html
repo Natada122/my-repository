@@ -1,23 +1,33 @@
-<h2><a routerLink="/favorites" class="right">faves</a></h2>
-<h1>
-  PropertyCross
-</h1>
-<p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to
-  search in your current location!</p>
-<input type='text' [(ngModel)]="searchValue" id="search-box"/>
-<button (click)="search(searchValue,'place_name')">Go!</button>
-<button (click)="searchPoints()">My location</button>
-<h2>{{message}}</h2>
-<div>
-  <ul *ngIf="!errorState">
-    <ul *ngIf="inputState; else unset">
-      <li *ngFor="let location of lastLocations; trackBy: trackbyId" (click)=selectLocation(location)>{{location.title}}</li>
-    </ul>
+<h2><a mat-button routerLink="/favorites" class="favorit">faves<mat-icon>favorite</mat-icon></a></h2>
+<section class="mat-typography">
+  <h1 class="mat-display-2">
+    PropertyCross
+  </h1>
+  <p class="mat-body-strong">Use the form below to search for houses to buy. You can search by place-name, postcode, or
+    click 'My location', to
+    search in your current location!</p>
+  <input matInput type='search' [(ngModel)]="searchValue" id="search-box" />
+  <button mat-fab color="accent" (click)="search(searchValue,'place_name')">Go!</button>
+  <button mat-stroked-button (click)="searchPoints()">My location</button>
+  <h2>{{message}}</h2>
+  <mat-progress-spinner *ngIf="searchState" color="accent" mode="indeterminate" class="progress">
+  </mat-progress-spinner>
+  <mat-list dense class="list" *ngIf="!errorState">
+      <cdk-virtual-scroll-viewport  itemSize = "50" minBufferPx = "200"  maxBufferPx = "400" class="scroll" > 
+    <div *ngIf="inputState; else unset">
+      <mat-nav-list *cdkVirtualFor="let location of lastLocations; trackBy: trackbyId">
+        <mat-divider></mat-divider>
+        <a class="item" (click)=selectLocation(location)>{{location.title}}</a>
+      </mat-nav-list>
+    </div>
     <ng-template #unset>
-      <li *ngFor="let search of lastSearches; trackBy: trackbyDate" routerLink="/results"
-        [queryParams]="{'location': search.location}" (click)="refreshSearch(search)">Search
-        "{{search.location}}"({{search.totalResult}})
-      </li>
+      <mat-nav-list *cdkVirtualFor="let search of lastSearches; trackBy: trackbyDate">
+        <mat-divider></mat-divider>
+        <a class="item" routerLink="/results" [queryParams]="{'location': search.location}"
+          (click)="refreshSearch(search)">
+          Search "{{search.location}}"({{search.totalResult}})</a>
+      </mat-nav-list>
     </ng-template>
-  </ul>
-</div>
+  </cdk-virtual-scroll-viewport>
+  </mat-list>
+</section>

@@ -8,6 +8,9 @@ import { ListOfResultsComponent } from "./list-of-results/list-of-results.compon
 import { SearchPageComponent } from "./search-page/search-page.component";
 import { FavoritesPageComponent } from "./favorites-page/favorites-page.component";
 import { PropertyListingPageComponent } from "./property-listing-page/property-listing-page.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MaterialModule } from './material/material.module';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { PropertyListingPageComponent } from "./property-listing-page/property-l
     HttpClientModule,
     HttpClientJsonpModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

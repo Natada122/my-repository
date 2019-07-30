@@ -17,12 +17,17 @@ button {
   right: 0px;
   padding: 10px;
 }
-ul {
-  list-style-type: none;
+.list {
   background-color: #c9c7c7;
 }
-li {
+.item {
+  margin: auto;
   color: rgb(112, 44, 44);
+}
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 h1 {
   color: azure;

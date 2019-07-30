@@ -1,9 +1,19 @@
-<button (click)="goBack()" class="left">back</button>
-<h1>Property Details</h1>
-<button (click)="onSelect()">{{favSymbol}}</button>
-<h2>{{house.price | currency:'USD'}}</h2>
-<h1>{{house.title}}</h1>
-<img [src]="house.imgUrl">;
-<p *ngIf="house.bedroomNumber">{{house.bedroomNumber}} bedrooms</p>
-<p *ngIf="house.bathroomNumber">{{house.bathroomNumber}} bathrooms</p>
-<p>{{house.summary}}</p>
+<mat-card class="center">
+<a mat-flat-button (click)="goBack()" class="left" color="accent">back</a>
+    <h1>Property Details</h1>
+    <button mat-raised-button (click)="onSelect()">{{favSymbol}} <mat-icon>favorite</mat-icon></button>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>{{house.price | currency:'USD'}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <h1>{{house.title}}</h1>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <img [src]="house.imgUrl">;
+        <p *ngIf="house.bedroomNumber">{{house.bedroomNumber}} bedrooms</p>
+        <p *ngIf="house.bathroomNumber">{{house.bathroomNumber}} bathrooms</p>
+        <p>{{house.summary}}</p>
+    </mat-card-content>
+</mat-card>

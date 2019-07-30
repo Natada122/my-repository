@@ -1,43 +1,49 @@
 :host {
-    text-align: center;
-    background-color:rgb(245, 245, 245);
-    position: absolute;
-    width: 100%;
-  }
-  a:link,
-  a:visited {
-    background-color: #fdbe35;
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-  }
-  p{
-      color: rgb(70, 70, 70);
-  }
-  a:hover,
-  a:active {
-    background-color: rgb(255, 179, 38);
-  }
-  .left {
-    position: absolute;
-    left: 50px;
-    padding: 10px;
-  }
-  h1{
+  background-color: rgb(245, 245, 245);
+  width: 100%;
+}
+a:link,
+a:visited {
+  background-color: #fdbe35;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+p {
+  color: rgb(70, 70, 70);
+}
+a:hover,
+a:active {
+  background-color: rgb(255, 179, 38);
+}
+.center {
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(245, 245, 245);
+  margin: auto;
+  width: 50%;
+}
+.left {
+  position: absolute;
+  left: 50px;
+  padding: 10px;
+}
+h1 {
   color: rgb(94, 94, 94);
-  }
-  h2{
-    color: rgb(63, 63, 63);
-    }
-    button {
-      background-color: #fdbe35;
-      color: white;
-      padding: 14px 25px;
-      text-align: center;
-      font-size: 30px;
-      text-decoration: none;
-      display: inline-block;
-      margin:auto;
-    }
+}
+h2 {
+  color: rgb(63, 63, 63);
+}
+button {
+  background-color: #fdbe35;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+  display: inline-block;
+  margin: auto;
+}

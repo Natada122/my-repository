@@ -77,7 +77,7 @@ export class PropertyListingPageComponent implements OnInit, OnDestroy {
   public deleteFavorite(): void {
     this.favSymbol = FAVORITE_SYMBOL;
     this.isFavorite = false;
-    this.favorites = this.favorites.filter(item => this.house.id == item.id);
+    this.favorites = this.favorites.filter(item => this.house.id !== item.id);
   }
   public goBack(): void {
     this.url.back();

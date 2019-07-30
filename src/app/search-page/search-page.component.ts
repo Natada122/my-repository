@@ -35,6 +35,7 @@ export class SearchPageComponent implements OnInit {
   public message: string = MESSAGE_SEARCH;
   public errorState: boolean = false;
   public inputState: boolean = false;
+  public searchState: boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -47,6 +48,7 @@ export class SearchPageComponent implements OnInit {
   }
   public search(location: string, typeSearch: string): void {
     this.message = "Searhing";
+    this.searchState=true;
     this.dataService
       .getData(location, typeSearch)
       .pipe(
@@ -68,6 +70,8 @@ export class SearchPageComponent implements OnInit {
             );
           } else {
             this.message = MESSAGE_ERROR_NULL_PROPERTIES;
+            this.errorState=true;
+            this.searchState=false;
           }
           if (statusCode == "200") {
             return this.dataService.getLocations(location);
@@ -129,3 +133,4 @@ export class SearchPageComponent implements OnInit {
     return item.id;
   }
 }
+///

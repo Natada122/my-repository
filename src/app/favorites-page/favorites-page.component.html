@@ -1,11 +1,19 @@
 <h1 *ngIf="!favorites.length; else unset">You have not added any properties to your favourites</h1>
 <ng-template #unset>
-    <ul>
-        <li *ngFor="let house of favorites; trackBy: trackById" [routerLink]="house.id"
-            [queryParams]="{'location': house.location}">
-            <h1>{{house.price | currency:'USD'}}</h1>
-            <p>{{house.summary}}</p>
-            <img [src]="house.imgUrl">
-        </li>
-    </ul>
+    <h1>Faves</h1>
+        <mat-list class="list">
+                <mat-list-item *ngFor="let house of favorites; trackBy: trackById" [routerLink]="house.id"
+                [queryParams]="{'location': house.location}">
+                    <mat-card matLine class="item">
+                        <mat-divider></mat-divider>
+                        <mat-card-title>
+                            <h1 matLine>{{house.price | currency:'USD'}}</h1>
+                        </mat-card-title>
+                        <mat-card-content>
+                            <p matLine>{{house.summary}}</p>
+                            <img matLine [src]="house.imgUrl">
+                        </mat-card-content>
+                    </mat-card>
+                </mat-list-item>
+            </mat-list>
 </ng-template>
