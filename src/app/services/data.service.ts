@@ -30,7 +30,7 @@ export class DataService {
   public getLocations(text: string): Observable<Place[]> {
     const url = `${URL}&page=1&place_name=${text}`;
     return this.http.jsonp(url, "callback").pipe(
-      map(({ response }) => {
+      map<any,any>(({ response }) => {
         let { locations } = response;
         locations = locations.map(
           (location: { place_name: string; title: string }) => {
@@ -56,7 +56,7 @@ export class DataService {
     const timer$ = timer(5000);
     const url = `${URL}&page=${page}&${typeSearch}=${location}`;
     return this.http.jsonp(url, "callback").pipe(
-      map(({ response }) => {
+      map<any,any>(({ response }) => {
         let { listings, total_results, status_code } = response;
         listings = listings.map(house => {
           return {
