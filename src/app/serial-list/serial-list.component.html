@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let serial of serials" (click)="onSelect(serial.id)">
+      <h2>{{serial.name}}</h2>
+      <img  [src]="serial.image">
+  </li>
+</ul>

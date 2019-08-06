@@ -1,0 +1,6 @@
+<h1>{{serial.name}}</h1>
+<h2>{{serial.status}}</h2>
+<h3>{{serial.raiting}}</h3>
+<h4>{{serial.genres}}</h4>
+<img *ngIf="serial.image" [src]="serial.image">
+<section [innerHTML]="serial.summary"></section>
