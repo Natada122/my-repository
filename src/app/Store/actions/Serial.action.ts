@@ -1,28 +1,28 @@
 import { Action } from "@ngrx/store";
 export enum ESerialActions {
-  getSerials = "[Serial] get Serials",
-  getSerialsSuccess = "[Serial] get Serials Success",
-  getSerial = "[Serial] get Serial",
-  getSerialSuccess = "[Serial] get Serial Success"
+  GetSerials = "[Serial] get Serials",
+  GetSerialsSuccess = "[Serial] get Serials Success",
+  GetSerial = "[Serial] get Serial",
+  GetSerialSuccess = "[Serial] get Serial Success"
 }
-export class getSerials implements Action {
-  public readonly type = ESerialActions.getSerials;
+export class GetSerials implements Action {
+  public readonly type = ESerialActions.GetSerials;
   constructor(public payload: string) {}
 }
-export class getSerialsSuccess implements Action {
-  public readonly type = ESerialActions.getSerialsSuccess;
+export class GetSerialsSuccess implements Action {
+  public readonly type = ESerialActions.GetSerialsSuccess;
   constructor(public payload: ISerial[]) {}
 }
-export class getSerial implements Action {
-  public readonly type = ESerialActions.getSerial;
+export class GetSerial implements Action {
+  public readonly type = ESerialActions.GetSerial;
   constructor(public payload: number) {}
 }
-export class getSerialSuccess implements Action {
-  public readonly type = ESerialActions.getSerialSuccess;
+export class GetSerialSuccess implements Action {
+  public readonly type = ESerialActions.GetSerialSuccess;
   constructor(public payload: ISerial) {}
 }
 export type SerialsActions =
-  | getSerial
-  | getSerialSuccess
-  | getSerials
-  | getSerialsSuccess;
+  | GetSerial
+  | GetSerialSuccess
+  | GetSerials
+  | GetSerialsSuccess;

@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-import { SerialEffects } from "./Store/effects/Serial.effects";
+import { SerialEffects } from "./Store/effects/serial.effects";
 import { SerialSearchComponent } from './serial-search/serial-search.component';
 import { SerialListComponent } from './serial-list/serial-list.component';
 import { SearchContainerComponent } from './search-container/container.component';

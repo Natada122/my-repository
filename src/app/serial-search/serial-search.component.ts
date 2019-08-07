@@ -1,19 +1,26 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {
+  Component,
+  Output,
+  EventEmitter,
+  Input,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 @Component({
   selector: "app-serial-search",
   templateUrl: "./serial-search.component.html",
-  styleUrls: ["./serial-search.component.css"]
+  styleUrls: ["./serial-search.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SerialSearchComponent implements OnInit {
+export class SerialSearchComponent {
   @Input()
   public searchValue: string;
+
   @Output()
   public onSelected = new EventEmitter<string>();
   public onSelect(value: string) {
     this.onSelected.emit(value);
   }
+  
   constructor() {}
-
-  ngOnInit() {}
 }

@@ -1,5 +1,5 @@
-import { ISerialState } from "./Serial.state";
-import { initialSerialsState } from "./Serial.state";
+import { ISerialState } from "./serial.state";
+import { initialSerialsState } from "./serial.state";
 import { ISearchState, initialSearchState } from './search.state';
 export interface IAppState {
   serials: ISerialState,

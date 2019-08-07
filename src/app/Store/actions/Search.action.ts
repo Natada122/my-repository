@@ -1,28 +1,28 @@
 import { Action } from "@ngrx/store";
 
 export enum ESearchActions {
-  getSearch = "[Search] get Search",
-  getSearchSuccess = "[Search] get Search Success",
-  setSearch = "[Search] set Search",
-  setSearchSuccess = "[Search] set Search Success"
+  GetSearch = "[Search] get Search",
+  GetSearchSuccess = "[Search] get Search Success",
+  SetSearch = "[Search] set Search",
+  SetSearchSuccess = "[Search] set Search Success"
 }
-export class getSearch implements Action {
-  public readonly type = ESearchActions.getSearch;
+export class GetSearch implements Action {
+  public readonly type = ESearchActions.GetSearch;
 }
-export class setSearch implements Action {
-  public readonly type = ESearchActions.setSearch;
+export class SetSearch implements Action {
+  public readonly type = ESearchActions.SetSearch;
   constructor(public payload: string) {}
 }
-export class getSearchSuccess implements Action {
-  public readonly type = ESearchActions.getSearchSuccess;
+export class GetSearchSuccess implements Action {
+  public readonly type = ESearchActions.GetSearchSuccess;
   constructor(public payload: string) {}
 }
-export class setSearchSuccess implements Action {
-  public readonly type = ESearchActions.setSearchSuccess;
+export class SetSearchSuccess implements Action {
+  public readonly type = ESearchActions.SetSearchSuccess;
   constructor(public payload: string) {}
 }
 export type SearchActions =
-  | getSearchSuccess
-  | getSearch
-  | setSearch
-  | setSearchSuccess;
+  | GetSearchSuccess
+  | GetSearch
+  | SetSearch
+  | SetSearchSuccess;

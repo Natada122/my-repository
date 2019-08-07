@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let serial of serials" (click)="onSelect(serial.id)">
+  <li *ngFor="let serial of serials; trackBy:trackById" (click)="onSelect(serial.id)">
       <h2>{{serial.name}}</h2>
       <img  [src]="serial.image">
   </li>

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import {URL} from "../constants"
+import { URL } from "../constants";
 
 @Injectable({
   providedIn: "root"
@@ -12,14 +12,14 @@ export class SerialService {
     const url = ` ${URL}${query}`;
     return this.http.get<IResponse[]>(url).pipe(
       map(data =>
-        data.map(value => {
+        data.map(({ show }) => {
           return {
-            id: value.show.id,
-            name: value.show.name,
-            genres: value.show.genres,
-            image: value.show.image ? value.show.image.medium : null,
-            status: value.show.status,
-            summary: value.show.summary
+            id: show.id,
+            name: show.name,
+            genres: show.genres,
+            image: show.image ? show.image.medium : null,
+            status: show.status,
+            summary: show.summary
           };
         })
       )

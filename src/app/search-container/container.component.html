@@ -1,2 +1,2 @@
-<app-serial-search [searchValue]="search | async" (onSelected)="onSearch($event)"></app-serial-search>
-<app-serial-list (onSelected)="onSelect($event)" [serials]="serials | async"></app-serial-list>
+<app-serial-search [searchValue]="search$ | async" (onSelected)="onSearch($event)"></app-serial-search>
+<app-serial-list (onSelected)="onSelect($event)" [serials]="serials$ | async"></app-serial-list>

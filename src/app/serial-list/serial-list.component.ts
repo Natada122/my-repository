@@ -1,13 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 @Component({
   selector: "app-serial-list",
   templateUrl: "./serial-list.component.html",
-  styleUrls: ["./serial-list.component.css"]
+  styleUrls: ["./serial-list.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SerialListComponent implements OnInit {
+export class SerialListComponent {
   @Input()
   public serials: ISerial[];
+  
   @Output()
   public onSelected = new EventEmitter<number>();
   public onSelect(value: number) {
@@ -15,5 +23,7 @@ export class SerialListComponent implements OnInit {
   }
   constructor() {}
 
-  ngOnInit() {}
+  public trackById(index: number, item: ISerial): number {
+    return item.id;
+  }
 }
