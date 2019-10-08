@@ -1,0 +1,212 @@
+
+  [
+    {
+      "location": "london",
+      "date": 1570449751979,
+      "listings": [
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 2,
+          "price": 870000,
+          "imgUrl": "https://imgs.nestimg.com/2_bedroom_apartment_for_sale_112410217385329287.jpg",
+          "summary": "A bright and contemporary 880 sqft apartment with a private balcony...",
+          "id": "f2f38303",
+          "location": "london",
+          "title": "East Road, Old Street, London, N1"
+        },
+        {
+          "bathroomNumber": 2,
+          "bedroomNumber": 4,
+          "price": 2375000,
+          "imgUrl": "https://imgs.nestimg.com/4_bedroom_flat_for_sale_112410220040715013.jpg",
+          "summary": "A superb four bedroom garden maisonette ideal for family living, oc...",
+          "id": "f5518c4c",
+          "location": "london",
+          "title": "The Gables, London, NW3 - Freehold"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 4,
+          "price": 4950000,
+          "imgUrl": "https://imgs.nestimg.com/4_bedroom_apartment_for_sale_112410220021511609.jpg",
+          "summary": "A rare opportunity to acquire a fully lateral, triple aspect apartm...",
+          "id": "f216a37a",
+          "location": "london",
+          "title": "Portland Place, Marylebone, London, W1B"
+        },
+        {
+          "bathroomNumber": 3,
+          "bedroomNumber": 15,
+          "price": 3000000,
+          "imgUrl": "https://imgs.nestimg.com/15_bedroom_terraced_house_for_sale_112410218717338330.jpg",
+          "summary": "A rare opportunity to acquire the whole of a period building of app...",
+          "id": "f3abadd5",
+          "location": "london",
+          "title": "Gloucester Place, Marylebone, London, NW1"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 1,
+          "price": 475000,
+          "imgUrl": "https://imgs.nestimg.com/1_bedroom_flat_for_sale_112410219046791128.jpg",
+          "summary": "Appealing first floor flat which forms part of a period conversion ...",
+          "id": "f4a86486",
+          "location": "london",
+          "title": "Artist Court, 35 Regan Way, London, N1"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 1,
+          "price": 435000,
+          "imgUrl": "https://imgs.nestimg.com/1_bedroom_flat_for_sale_112410229226854022.jpg",
+          "summary": "Large third floor modern flat, located moments from hoxton overgrou...",
+          "id": "f94f439",
+          "location": "london",
+          "title": "Nichols Court, 10 Cremer Street, London, E2"
+        },
+        {
+          "bathroomNumber": 2,
+          "bedroomNumber": 4,
+          "price": 735000,
+          "imgUrl": "https://imgs.nestimg.com/4_bedroom_semi_detached_house_for_sale_112317475426756829.jpg",
+          "summary": "Hereford road e3. A 4 bed 2 bathroom property located in the heart ...",
+          "id": "f3eeda64",
+          "location": "london",
+          "title": "Hereford Road, London E3"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 3,
+          "price": 1025000,
+          "imgUrl": "https://imgs.nestimg.com/3_bedroom_flat_for_sale_112410216796188208.jpg",
+          "summary": "A recently refurbished three bedroom apartment located in a secured...",
+          "id": "f3e6b985",
+          "location": "london",
+          "title": "Water Gardens , London W2 - Porter"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 3,
+          "price": 850000,
+          "imgUrl": "https://imgs.nestimg.com/3_bedroom_flat_for_sale_112410217844828845.jpg",
+          "summary": "Ly to felicity j lord is this ly appointed three bedroom maisonette...",
+          "id": "f3684fc",
+          "location": "london",
+          "title": "Asher Way, LONDON - Maisonette"
+        },
+        {
+          "bathroomNumber": 2,
+          "bedroomNumber": 5,
+          "price": 1300000,
+          "imgUrl": "https://imgs.nestimg.com/5_bedroom_house_for_sale_112268533532058328.jpg",
+          "summary": "And five double bedroom family home set over three floors fully ext...",
+          "id": "f3592331",
+          "location": "london",
+          "title": "Wakeman Road, Kensal Rise, London"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 3,
+          "price": 725000,
+          "imgUrl": "https://imgs.nestimg.com/3_bedroom_flat_for_sale_112410234881289529.jpg",
+          "summary": "A , three bedroom period conversion located on a quiet road in n16....",
+          "id": "f2669bad",
+          "location": "london",
+          "title": "Cranwich Road, London, N16"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 5,
+          "price": 6450000,
+          "imgUrl": "https://imgs.nestimg.com/5_bedroom_terraced_house_for_sale_112410217650108729.jpg",
+          "summary": "An ly presented grade ii listed stucco fronted belgravia town house",
+          "id": "f3516ec2",
+          "location": "london",
+          "title": "Eaton Terrace, Belgravia, London, SW1W"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 1,
+          "price": 462500,
+          "imgUrl": "https://imgs.nestimg.com/1_bedroom_flat_for_sale_112200077307108472.jpg",
+          "summary": "A ly located one double bedroom third floor apartment situated in t...",
+          "id": "fd4e6d9",
+          "location": "london",
+          "title": "Abbey Road, London, London, NW8"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 3,
+          "price": 1050000,
+          "imgUrl": "https://imgs.nestimg.com/3_bedroom_flat_for_sale_112212549398000337.jpg",
+          "summary": "Located on one of crouch ends finest roads is this three bedroom sp...",
+          "id": "f477d50b",
+          "location": "london",
+          "title": "Coolhurst Road, Crouch End, London"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 4,
+          "price": 15950000,
+          "imgUrl": "https://imgs.nestimg.com/4_bedroom_terraced_house_for_sale_112410216753338101.jpg",
+          "summary": "Urbished knightsbridge house",
+          "id": "f178ebb5",
+          "location": "london",
+          "title": "Egerton Crescent, London, SW3"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 3,
+          "price": 2150000,
+          "imgUrl": "https://imgs.nestimg.com/3_bedroom_flat_for_sale_112410219182599399.jpg",
+          "summary": "A 3 bedroom apartment for sale off the kings road, sw3 a and three ...",
+          "id": "f1f3952a",
+          "location": "london",
+          "title": "Quant House, 2 Milmans Street, London, SW10"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 1,
+          "price": 600000,
+          "imgUrl": "https://imgs.nestimg.com/1_bedroom_flat_for_sale_112404093035981938.jpg",
+          "summary": "Located in the highly worcester point development is this ly presen...",
+          "id": "f5322e4d",
+          "location": "london",
+          "title": "Worcester Point, Central Street, London, EC1V"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 3,
+          "price": 550000,
+          "imgUrl": "https://imgs.nestimg.com/3_bedroom_terraced_house_for_sale_112076557289281429.jpg",
+          "summary": "Rare opportunity to the market; a three bedroom, freehold, terraced...",
+          "id": "f1f34454",
+          "location": "london",
+          "title": "Bolton Road, London - Freehold"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 1,
+          "price": 375000,
+          "imgUrl": "https://imgs.nestimg.com/1_bedroom_flat_for_sale_112410234067904718.jpg",
+          "summary": "A opportunity to acquire a top floor one bedroom split level apartm...",
+          "id": "fb851db",
+          "location": "london",
+          "title": "Trundleys Road, London SE8 - Freehold"
+        },
+        {
+          "bathroomNumber": "",
+          "bedroomNumber": 8,
+          "price": 3700000,
+          "imgUrl": "https://imgs.nestimg.com/8_bedroom_terraced_house_for_sale_112410219707825360.jpg",
+          "summary": "A 8 bedroom family home",
+          "id": "f49cba37",
+          "location": "london",
+          "title": "Maida Vale, Maida Vale, London, W9"
+        }
+      ],
+      "type": "place_name",
+      "totalResult": 60358,
+      "curPage": 1
+    }
+  ]

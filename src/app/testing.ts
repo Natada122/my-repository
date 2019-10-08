@@ -45,19 +45,19 @@ export const TEST_HOUSE: House = {
   title: "title"
 };
 export const DATA_SERVICE_STUB = {
-  getData: () => {},
-  setSearch: () => {},
-  getSearch: () => {},
-  getLocations: () => {}
+  getData: () => { },
+  setSearch: () => { },
+  getSearch: () => { },
+  getLocations: () => { }
 };
 export const DATA_SERVICE_MOCK = {
-  setSearch: () => {},
+  setSearch: () => { },
   getData: () => {
     return of({
       listings: TEST_HOUSES
     });
   },
-  setFavorites: () => {},
+  setFavorites: () => { },
   getFavorites: () => {
     return TEST_HOUSES;
   },
